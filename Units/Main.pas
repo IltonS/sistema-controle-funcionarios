@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, System.Actions, Vcl.ActnList,
-  Vcl.StdStyleActnCtrls, Vcl.ActnMan, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.AppEvnts, DataModule, Login;
+  Vcl.StdStyleActnCtrls, Vcl.ActnMan, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.AppEvnts, DataModule, Login,
+  Uf;
 
 type
   TFrmMain = class(TForm)
@@ -142,7 +143,7 @@ end;
 
 procedure TFrmMain.Uf(Sender: TObject);
 begin
-  //to-do
+  FrmUf.ShowModal;
 end;
 
 procedure TFrmMain.UFCmdUpdate(Sender: TObject);

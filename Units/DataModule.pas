@@ -15,6 +15,7 @@ type
     MySQLDriverLink: TFDPhysMySQLDriverLink;
     MySQLConnection: TFDConnection;
     QueryLogin: TFDQuery;
+    TableUF: TFDTable;
   private
     { Private declarations }
   public

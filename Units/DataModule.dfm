@@ -29,4 +29,13 @@ object DM: TDM
     Left = 32
     Top = 80
   end
+  object TableUF: TFDTable
+    Active = True
+    IndexFieldNames = 'id_uf'
+    Connection = MySQLConnection
+    UpdateOptions.UpdateTableName = 'db_scf.tb_uf'
+    TableName = 'db_scf.tb_uf'
+    Left = 32
+    Top = 144
+  end
 end

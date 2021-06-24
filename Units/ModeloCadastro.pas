@@ -68,7 +68,7 @@ end;
 
 procedure TFrmModeloCadastro.BtnDeletarClick(Sender: TObject);
 begin
-  if DM.QueryLogin.FieldByName(NomeTabela+'_E') = 1 then
+  if DM.QueryLogin.FieldByName(NomeTabela+'_E').AsString = '1' then
   begin
     if MessageDlg('Deseja Excluir o Registro', mtconfirmation, [mbYes, mbNo], 0) = mrYes then
      DataSource.DataSet.Delete;
@@ -80,7 +80,7 @@ end;
 
 procedure TFrmModeloCadastro.BtnEditarClick(Sender: TObject);
 begin
-  if DM.QueryLogin.FieldByName(NomeTabela+'_A') = 1 then
+  if DM.QueryLogin.FieldByName(NomeTabela+'_A').AsString = '1' then
     DataSource.DataSet.Edit
   else
     ShowMessage('Você não possui permissão para realizar esta operação.');
@@ -95,7 +95,7 @@ end;
 
 procedure TFrmModeloCadastro.BtnNovoClick(Sender: TObject);
 begin
-  if DM.QueryLogin.FieldByName(NomeTabela+'_I') = 1 then
+  if DM.QueryLogin.FieldByName(NomeTabela+'_I').AsString = '1' then
     DataSource.DataSet.Insert
   else
     ShowMessage('Você não possui permissão para realizar esta operação.');
