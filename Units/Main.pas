@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, System.Actions, Vcl.ActnList,
-  Vcl.StdStyleActnCtrls, Vcl.ActnMan, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.AppEvnts;
+  Vcl.StdStyleActnCtrls, Vcl.ActnMan, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.AppEvnts, DataModule;
 
 type
   TFrmMain = class(TForm)
@@ -29,6 +29,12 @@ type
     procedure FormActivate(Sender: TObject);
     procedure TimerTimer(Sender: TObject);
     procedure ApplicationEventsHint(Sender: TObject);
+    procedure Funcionarios(Sender: TObject);
+    procedure Cargos(Sender: TObject);
+    procedure Uf(Sender: TObject);
+    procedure FuncionariosCmdUpdate(Sender: TObject);
+    procedure CargosCmdUpdate(Sender: TObject);
+    procedure UFCmdUpdate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -48,11 +54,42 @@ begin
   StatusBar.Panels[2].Text := Application.Hint;
 end;
 
+procedure TFrmMain.Cargos(Sender: TObject);
+begin
+  //to-do
+end;
+
+procedure TFrmMain.CargosCmdUpdate(Sender: TObject);
+begin
+  //Habilita de acordo com a permissão do usuário
+  if DM.QueryLogin.FieldByName('tb_cargos').AsString = '1' then
+    CargosCmd.Enabled := True
+  else
+    CargosCmd.Enabled := False;
+end;
+
 procedure TFrmMain.FormActivate(Sender: TObject);
 begin
   //Atualiza a data do sistema
   StatusBar.Panels[0].Text := FormatDateTime('hh:nn:ss', Now);
   StatusBar.Panels[1].Text := FormatDateTime('dddd", "dd" de "mmmm" de "yyyy', Now);
+
+  //Executa a Query de login
+  DM.QueryLogin.Open;
+end;
+
+procedure TFrmMain.Funcionarios(Sender: TObject);
+begin
+  //to-do
+end;
+
+procedure TFrmMain.FuncionariosCmdUpdate(Sender: TObject);
+begin
+  //Habilita de acordo com a permissão do usuário
+  if DM.QueryLogin.FieldByName('tb_funcionarios').AsString = '1' then
+    FuncionariosCmd.Enabled := True
+  else
+    FuncionariosCmd.Enabled := False;
 end;
 
 procedure TFrmMain.Sair(Sender: TObject);
@@ -66,6 +103,20 @@ begin
   //Atualiza a data do sistema
   StatusBar.Panels[0].Text := FormatDateTime('hh:nn:ss', Now);
   StatusBar.Panels[1].Text := FormatDateTime('dddd", "dd" de "mmmm" de "yyyy', Now);
+end;
+
+procedure TFrmMain.Uf(Sender: TObject);
+begin
+  //to-do
+end;
+
+procedure TFrmMain.UFCmdUpdate(Sender: TObject);
+begin
+  //Habilita de acordo com a permissão do usuário
+  if DM.QueryLogin.FieldByName('tb_uf').AsString = '1' then
+    UFCmd.Enabled := True
+  else
+    UFCmd.Enabled := False;
 end;
 
 end.

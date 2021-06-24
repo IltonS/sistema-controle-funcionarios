@@ -46,18 +46,24 @@ object FrmMain: TFrmMain
       Caption = '&Funcion'#225'rios'
       Hint = 'Cadastro de Funcion'#225'rios|Registro dos funcion'#225'rios do sistema.'
       ShortCut = 16454
+      OnExecute = Funcionarios
+      OnUpdate = FuncionariosCmdUpdate
     end
     object CargosCmd: TAction
       Category = 'cadastros'
       Caption = '&Cargos'
       Hint = 'Cadastro de Cargos e Fun'#231#245'es|Manuten'#231#227'o da tabela de cargos.'
       ShortCut = 49219
+      OnExecute = Cargos
+      OnUpdate = CargosCmdUpdate
     end
     object UFCmd: TAction
       Category = 'cadastros'
       Caption = '&UF'
       Hint = 'Cadastro de UFs|Manuten'#231#227'o da tabela de UFs.'
       ShortCut = 16469
+      OnExecute = Uf
+      OnUpdate = UFCmdUpdate
     end
     object SairCmd: TAction
       Category = 'cadastros'
