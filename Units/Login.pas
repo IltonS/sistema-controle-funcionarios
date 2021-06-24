@@ -13,10 +13,11 @@ type
     Label1: TLabel;
     EdtLogin: TEdit;
     Label2: TLabel;
-    EdtSenha: TEdit;
     BtnOk: TButton;
     BtnCancelar: TButton;
+    EdtSenha: TEdit;
     procedure BtnOkClick(Sender: TObject);
+    procedure BtnCancelarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,6 +33,11 @@ implementation
 
 uses
   Main;
+
+procedure TFrmLogin.BtnCancelarClick(Sender: TObject);
+begin
+  FrmMain.Close;
+end;
 
 procedure TFrmLogin.BtnOkClick(Sender: TObject);
 var
@@ -51,7 +57,14 @@ begin
     FrmMain.StatusBar.Panels[2].Text := 'Usuário: ' + DM.QueryLogin.FieldByName('login').AsString;
     FrmMain.WindowState := wsMaximized;
     FrmLogin.Close;
+  end
+  else
+  begin
+    ShowMessage('Login e/ou senha inválidos...');
+    EdtLogin.Text := '';
+    EdtSenha.Text := '';
   end;
+
 
 end;
 

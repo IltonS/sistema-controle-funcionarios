@@ -5,7 +5,7 @@ object FrmLogin: TFrmLogin
   BorderStyle = bsSingle
   Caption = 'Login do Sistema de Controle de Funcion'#225'rios'
   ClientHeight = 248
-  ClientWidth = 359
+  ClientWidth = 443
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,14 +19,14 @@ object FrmLogin: TFrmLogin
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 359
+    Width = 443
     Height = 49
     Align = alTop
     Alignment = taLeftJustify
     BevelEdges = []
     BevelOuter = bvNone
     Caption = '   Login'
-    Color = clNavy
+    Color = 12480016
     Font.Charset = ANSI_CHARSET
     Font.Color = clWhite
     Font.Height = -24
@@ -34,16 +34,17 @@ object FrmLogin: TFrmLogin
     Font.Style = []
     ParentBackground = False
     ParentFont = False
-    TabOrder = 0
+    TabOrder = 3
+    ExplicitWidth = 359
   end
   object Panel2: TPanel
     Left = 16
     Top = 63
-    Width = 321
+    Width = 409
     Height = 114
     BevelInner = bvRaised
     BevelOuter = bvLowered
-    TabOrder = 1
+    TabOrder = 0
     object Label1: TLabel
       Left = 16
       Top = 24
@@ -61,7 +62,7 @@ object FrmLogin: TFrmLogin
     object EdtLogin: TEdit
       Left = 64
       Top = 21
-      Width = 225
+      Width = 321
       Height = 21
       CharCase = ecLowerCase
       TabOrder = 0
@@ -69,27 +70,29 @@ object FrmLogin: TFrmLogin
     object EdtSenha: TEdit
       Left = 64
       Top = 64
-      Width = 225
+      Width = 321
       Height = 21
       CharCase = ecLowerCase
+      PasswordChar = '*'
       TabOrder = 1
     end
   end
   object BtnOk: TButton
-    Left = 168
+    Left = 256
     Top = 200
     Width = 75
     Height = 25
     Caption = 'Ok'
-    TabOrder = 2
+    TabOrder = 1
     OnClick = BtnOkClick
   end
   object BtnCancelar: TButton
-    Left = 262
+    Left = 350
     Top = 200
     Width = 75
     Height = 25
     Caption = 'Cancelar'
-    TabOrder = 3
+    TabOrder = 2
+    OnClick = BtnCancelarClick
   end
 end
