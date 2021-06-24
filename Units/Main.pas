@@ -15,16 +15,23 @@ type
     UFCmd: TAction;
     SairCmd: TAction;
     MainMenu: TMainMenu;
+    StatusBar: TStatusBar;
+    Timer: TTimer;
+    ApplicationEvents: TApplicationEvents;
+    LogoffCmd: TAction;
+    UsuariosCmd: TAction;
+    PerfisCmd: TAction;
+    Sistema1: TMenuItem;
+    Usurios1: TMenuItem;
+    Perfis1: TMenuItem;
+    Logoff1: TMenuItem;
+    N2: TMenuItem;
+    Sair1: TMenuItem;
     Cadastros1: TMenuItem;
     Funcionrios1: TMenuItem;
     abelasAuxiliares1: TMenuItem;
     Cargos1: TMenuItem;
     UF1: TMenuItem;
-    N1: TMenuItem;
-    Sair1: TMenuItem;
-    StatusBar: TStatusBar;
-    Timer: TTimer;
-    ApplicationEvents: TApplicationEvents;
     procedure Sair(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure TimerTimer(Sender: TObject);
@@ -35,6 +42,11 @@ type
     procedure FuncionariosCmdUpdate(Sender: TObject);
     procedure CargosCmdUpdate(Sender: TObject);
     procedure UFCmdUpdate(Sender: TObject);
+    procedure Logoff(Sender: TObject);
+    procedure Usuarios(Sender: TObject);
+    procedure Perfis(Sender: TObject);
+    procedure UsuariosCmdUpdate(Sender: TObject);
+    procedure PerfisCmdUpdate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -91,6 +103,30 @@ begin
     FuncionariosCmd.Enabled := False;
 end;
 
+procedure TFrmMain.Logoff(Sender: TObject);
+begin
+  StatusBar.Panels[2].Text := '';
+  DM.QueryLogin.Close;
+  DM.QueryLogin.SQL.Clear;
+  FrmLogin.EdtLogin.Text := '';
+  FrmLogin.EdtSenha.Text := '';
+  FrmLogin.ShowModal;
+end;
+
+procedure TFrmMain.Perfis(Sender: TObject);
+begin
+  //to-do
+end;
+
+procedure TFrmMain.PerfisCmdUpdate(Sender: TObject);
+begin
+//Habilita de acordo com a permissão do usuário
+  if DM.QueryLogin.FieldByName('tb_perfis').AsString = '1' then
+    PerfisCmd.Enabled := True
+  else
+    PerfisCmd.Enabled := False;
+end;
+
 procedure TFrmMain.Sair(Sender: TObject);
 begin
   //Encerra a aplicação.
@@ -116,6 +152,20 @@ begin
     UFCmd.Enabled := True
   else
     UFCmd.Enabled := False;
+end;
+
+procedure TFrmMain.Usuarios(Sender: TObject);
+begin
+  //to-do
+end;
+
+procedure TFrmMain.UsuariosCmdUpdate(Sender: TObject);
+begin
+  //Habilita de acordo com a permissão do usuário
+  if DM.QueryLogin.FieldByName('tb_usuarios').AsString = '1' then
+    UsuariosCmd.Enabled := True
+  else
+    UsuariosCmd.Enabled := False;
 end;
 
 end.

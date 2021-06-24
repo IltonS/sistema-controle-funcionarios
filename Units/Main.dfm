@@ -65,34 +65,67 @@ object FrmMain: TFrmMain
       OnUpdate = UFCmdUpdate
     end
     object SairCmd: TAction
-      Category = 'cadastros'
-      Caption = '&Sair'
+      Category = 'sistema'
+      Caption = 'Sai&r'
       Hint = 'Sair|Encerra a aplica'#231#227'o.'
       OnExecute = Sair
+    end
+    object LogoffCmd: TAction
+      Category = 'sistema'
+      Caption = '&Logoff'
+      Hint = 'Logoff|Efetua logoff do usu'#225'rio atual.'
+      ShortCut = 16460
+      OnExecute = Logoff
+    end
+    object UsuariosCmd: TAction
+      Category = 'sistema'
+      Caption = '&Usu'#225'rios'
+      Hint = 'Usuarios|Manuten'#231#227'o dos usu'#225'rios do sistema.'
+      OnExecute = Usuarios
+      OnUpdate = UsuariosCmdUpdate
+    end
+    object PerfisCmd: TAction
+      Category = 'sistema'
+      Caption = '&Perfis'
+      Hint = 'Perfis|Manuten'#231#227'o dos perfis de usu'#225'rios do sistema.'
+      OnExecute = Perfis
+      OnUpdate = PerfisCmdUpdate
     end
   end
   object MainMenu: TMainMenu
     Left = 112
     Top = 16
+    object Sistema1: TMenuItem
+      Caption = '&Sistema'
+      object Usurios1: TMenuItem
+        Action = UsuariosCmd
+      end
+      object Perfis1: TMenuItem
+        Action = PerfisCmd
+      end
+      object Logoff1: TMenuItem
+        Action = LogoffCmd
+      end
+      object N2: TMenuItem
+        Caption = '-'
+      end
+      object Sair1: TMenuItem
+        Action = SairCmd
+      end
+    end
     object Cadastros1: TMenuItem
       Caption = '&Cadastros'
       object Funcionrios1: TMenuItem
         Action = FuncionariosCmd
       end
       object abelasAuxiliares1: TMenuItem
-        Caption = '&Tabelas Auxiliares'
+        Caption = 'Tabelas Auxiliares'
         object Cargos1: TMenuItem
           Action = CargosCmd
         end
         object UF1: TMenuItem
           Action = UFCmd
         end
-      end
-      object N1: TMenuItem
-        Caption = '-'
-      end
-      object Sair1: TMenuItem
-        Action = SairCmd
       end
     end
   end
