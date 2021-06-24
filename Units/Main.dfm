@@ -14,7 +14,6 @@ object FrmMain: TFrmMain
   OldCreateOrder = False
   Position = poScreenCenter
   ShowHint = True
-  WindowState = wsMaximized
   OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 13
@@ -32,10 +31,10 @@ object FrmMain: TFrmMain
       end
       item
         Width = 250
+      end
+      item
+        Width = 250
       end>
-    ExplicitLeft = 528
-    ExplicitTop = 216
-    ExplicitWidth = 0
   end
   object ActionManager: TActionManager
     Left = 32

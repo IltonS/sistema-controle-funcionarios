@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, System.Actions, Vcl.ActnList,
-  Vcl.StdStyleActnCtrls, Vcl.ActnMan, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.AppEvnts, DataModule;
+  Vcl.StdStyleActnCtrls, Vcl.ActnMan, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.AppEvnts, DataModule, Login;
 
 type
   TFrmMain = class(TForm)
@@ -51,7 +51,7 @@ implementation
 procedure TFrmMain.ApplicationEventsHint(Sender: TObject);
 begin
   //Exibe a ajuda da ação
-  StatusBar.Panels[2].Text := Application.Hint;
+  StatusBar.Panels[3].Text := Application.Hint;
 end;
 
 procedure TFrmMain.Cargos(Sender: TObject);
@@ -74,8 +74,7 @@ begin
   StatusBar.Panels[0].Text := FormatDateTime('hh:nn:ss', Now);
   StatusBar.Panels[1].Text := FormatDateTime('dddd", "dd" de "mmmm" de "yyyy', Now);
 
-  //Executa a Query de login
-  DM.QueryLogin.Open;
+  FrmLogin.ShowModal;
 end;
 
 procedure TFrmMain.Funcionarios(Sender: TObject);
