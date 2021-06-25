@@ -45,7 +45,6 @@ object FrmModeloCadastro: TFrmModeloCadastro
     BevelInner = bvRaised
     BevelOuter = bvLowered
     TabOrder = 1
-    ExplicitTop = 49
   end
   object DBGrid: TDBGrid
     Left = 0

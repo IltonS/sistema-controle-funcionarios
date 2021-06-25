@@ -66,6 +66,7 @@ object FrmLogin: TFrmLogin
       Height = 21
       CharCase = ecLowerCase
       TabOrder = 0
+      Text = 'master'
     end
     object EdtSenha: TEdit
       Left = 64
@@ -75,6 +76,7 @@ object FrmLogin: TFrmLogin
       CharCase = ecLowerCase
       PasswordChar = '*'
       TabOrder = 1
+      Text = 'master'
       OnKeyPress = EdtSenhaKeyPress
     end
   end

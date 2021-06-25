@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ToolWin, Vcl.ExtCtrls,
-  Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, DataModule, DBCtrls;
+  Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, DataModule, DBCtrls,
+  FireDAC.Stan.Error;
 
 type
   TFrmModeloCadastro = class(TForm)
@@ -106,10 +107,20 @@ end;
 
 procedure TFrmModeloCadastro.BtnGravarClick(Sender: TObject);
 begin
-  DataSource.DataSet.Post;
-  DataSource.DataSet.Filtered := False;
-  HabilitaControles;
-  HabilitaControlesVisuais(False);
+  try
+    DataSource.DataSet.Post;
+    DataSource.DataSet.Filtered := False;
+    HabilitaControles;
+    HabilitaControlesVisuais(False);
+  except
+    on E: EFDDBEngineException do
+    begin
+      case E.ErrorCode of
+        1643: ShowMessage(E.Message); //Algum campo não pode ser nulo ou vazio, exibe a mensagem de erro do BD configurada com trigger na tabela.
+        1062: ShowMessage('Este registro já foi cadastrado'); //Violação de valor único para campo no BD.
+      end;
+    end;
+  end;
 end;
 
 procedure TFrmModeloCadastro.BtnNovoClick(Sender: TObject);
