@@ -116,8 +116,9 @@ begin
     on E: EFDDBEngineException do
     begin
       case E.ErrorCode of
-        1643: ShowMessage(E.Message); //Algum campo não pode ser nulo ou vazio, exibe a mensagem de erro do BD configurada com trigger na tabela.
-        1062: ShowMessage('Este registro já foi cadastrado'); //Violação de valor único para campo no BD.
+        //A validação de dados é feita no BD através de Triggers
+        //Formulário filhos podem herdar essa procedure sem a necessidade de escrever código específico para validação.
+        1643: MessageDlg(E.Message, mtError, [mbOK], 0);
         else ShowMessage(E.Message + 'Código: ' + IntToStr(E.ErrorCode) ); //Mensagem padrão para pegar e tratar erros não previstos.
       end;
     end;
