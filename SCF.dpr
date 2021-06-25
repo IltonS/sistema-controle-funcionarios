@@ -9,7 +9,8 @@ uses
   Uf in 'Units\Uf.pas' {FrmUf},
   Cargos in 'Units\Cargos.pas' {FrmCargos},
   Perfis in 'Units\Perfis.pas' {FrmPerfis},
-  Usuarios in 'Units\Usuarios.pas' {FrmUsuarios};
+  Usuarios in 'Units\Usuarios.pas' {FrmUsuarios},
+  Funcionarios in 'Units\Funcionarios.pas' {FrmFuncionarios};
 
 {$R *.res}
 
@@ -25,5 +26,6 @@ begin
   Application.CreateForm(TFrmCargos, FrmCargos);
   Application.CreateForm(TFrmPerfis, FrmPerfis);
   Application.CreateForm(TFrmUsuarios, FrmUsuarios);
+  Application.CreateForm(TFrmFuncionarios, FrmFuncionarios);
   Application.Run;
 end.

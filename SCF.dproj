@@ -132,6 +132,10 @@
             <Form>FrmUsuarios</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Units\Funcionarios.pas">
+            <Form>FrmFuncionarios</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

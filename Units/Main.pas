@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, System.Actions, Vcl.ActnList,
   Vcl.StdStyleActnCtrls, Vcl.ActnMan, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.AppEvnts, DataModule, Login,
-  Uf, Cargos, Perfis, Usuarios;
+  Uf, Cargos, Perfis, Usuarios, Funcionarios;
 
 type
   TFrmMain = class(TForm)
@@ -92,7 +92,7 @@ end;
 
 procedure TFrmMain.Funcionarios(Sender: TObject);
 begin
-  //to-do
+  FrmFuncionarios.ShowModal;
 end;
 
 procedure TFrmMain.FuncionariosCmdUpdate(Sender: TObject);

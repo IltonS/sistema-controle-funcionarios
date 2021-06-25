@@ -65,4 +65,13 @@ object DM: TDM
     Left = 240
     Top = 144
   end
+  object TableFuncionarios: TFDTable
+    Active = True
+    IndexFieldNames = 'id_funcionario'
+    Connection = MySQLConnection
+    UpdateOptions.UpdateTableName = 'db_scf.tb_funcionarios'
+    TableName = 'db_scf.tb_funcionarios'
+    Left = 320
+    Top = 144
+  end
 end

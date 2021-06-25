@@ -19,6 +19,7 @@ type
     TableCargos: TFDTable;
     TablePerfis: TFDTable;
     TableUsuarios: TFDTable;
+    TableFuncionarios: TFDTable;
   private
     { Private declarations }
   public
