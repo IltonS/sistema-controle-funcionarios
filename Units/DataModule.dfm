@@ -56,4 +56,13 @@ object DM: TDM
     Left = 168
     Top = 144
   end
+  object TableUsuarios: TFDTable
+    Active = True
+    IndexFieldNames = 'id_usuario'
+    Connection = MySQLConnection
+    UpdateOptions.UpdateTableName = 'db_scf.tb_usuarios'
+    TableName = 'db_scf.tb_usuarios'
+    Left = 240
+    Top = 144
+  end
 end

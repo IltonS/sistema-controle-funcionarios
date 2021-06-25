@@ -8,7 +8,8 @@ uses
   ModeloCadastro in 'Units\ModeloCadastro.pas' {FrmModeloCadastro},
   Uf in 'Units\Uf.pas' {FrmUf},
   Cargos in 'Units\Cargos.pas' {FrmCargos},
-  Perfis in 'Units\Perfis.pas' {FrmPerfis};
+  Perfis in 'Units\Perfis.pas' {FrmPerfis},
+  Usuarios in 'Units\Usuarios.pas' {FrmUsuarios};
 
 {$R *.res}
 
@@ -23,5 +24,6 @@ begin
   Application.CreateForm(TFrmUf, FrmUf);
   Application.CreateForm(TFrmCargos, FrmCargos);
   Application.CreateForm(TFrmPerfis, FrmPerfis);
+  Application.CreateForm(TFrmUsuarios, FrmUsuarios);
   Application.Run;
 end.
