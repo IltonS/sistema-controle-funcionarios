@@ -17,6 +17,7 @@ type
     QueryLogin: TFDQuery;
     TableUF: TFDTable;
     TableCargos: TFDTable;
+    TablePerfis: TFDTable;
   private
     { Private declarations }
   public

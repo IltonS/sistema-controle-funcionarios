@@ -47,4 +47,13 @@ object DM: TDM
     Left = 96
     Top = 144
   end
+  object TablePerfis: TFDTable
+    Active = True
+    IndexFieldNames = 'id_perfil'
+    Connection = MySQLConnection
+    UpdateOptions.UpdateTableName = 'db_scf.tb_perfis'
+    TableName = 'db_scf.tb_perfis'
+    Left = 168
+    Top = 144
+  end
 end

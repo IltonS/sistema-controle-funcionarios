@@ -209,7 +209,9 @@ begin
     else if Components[I] is TDBComboBox then
       TDBComboBox(Components[I]).Enabled := Status
     else if Components[I] is TDBMemo then
-      TDBMemo(Components[I]).Enabled := Status;
+      TDBMemo(Components[I]).Enabled := Status
+    else if Components[I] is TDBCheckBox then
+      TDBCheckBox(Components[I]).Enabled := Status;
   end;
 end;
 

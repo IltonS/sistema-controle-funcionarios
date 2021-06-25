@@ -124,6 +124,10 @@
             <Form>FrmCargos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Units\Perfis.pas">
+            <Form>FrmPerfis</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
