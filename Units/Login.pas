@@ -18,6 +18,7 @@ type
     EdtSenha: TEdit;
     procedure BtnOkClick(Sender: TObject);
     procedure BtnCancelarClick(Sender: TObject);
+    procedure EdtSenhaKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -64,8 +65,11 @@ begin
     EdtLogin.Text := '';
     EdtSenha.Text := '';
   end;
+end;
 
-
+procedure TFrmLogin.EdtSenhaKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then BtnOkClick(Sender);
 end;
 
 end.

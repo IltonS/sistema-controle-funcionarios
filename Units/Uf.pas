@@ -15,6 +15,7 @@ type
     Label2: TLabel;
     EdtNomeEstado: TDBEdit;
     procedure FormActivate(Sender: TObject);
+    procedure BtnPesquisarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -27,6 +28,12 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TFrmUf.BtnPesquisarClick(Sender: TObject);
+begin
+  FiltroPesquisar := 'uf LIKE ' + #39 + '%' + EdtPesquisa.Text + '%' + #39;
+  inherited;
+end;
 
 procedure TFrmUf.FormActivate(Sender: TObject);
 begin

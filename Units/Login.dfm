@@ -75,6 +75,7 @@ object FrmLogin: TFrmLogin
       CharCase = ecLowerCase
       PasswordChar = '*'
       TabOrder = 1
+      OnKeyPress = EdtSenhaKeyPress
     end
   end
   object BtnOk: TButton

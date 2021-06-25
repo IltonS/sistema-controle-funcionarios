@@ -25,6 +25,7 @@ type
     BtnPosterior: TBitBtn;
     BtnUltimo: TBitBtn;
     DataSource: TDataSource;
+    BtnPesquisar: TBitBtn;
     procedure BtnNovoClick(Sender: TObject);
     procedure BtnGravarClick(Sender: TObject);
     procedure BtnEditarClick(Sender: TObject);
@@ -35,12 +36,14 @@ type
     procedure BtnPosteriorClick(Sender: TObject);
     procedure BtnUltimoClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure BtnPesquisarClick(Sender: TObject);
   private
     { Private declarations }
     FNomeTabela: String;
     FNomeJanela: String;
     FTitulo: String;
     FCampoPesquisar: String;
+    FFiltroPesquisar: String;
     procedure HabilitaControles;
     procedure HabilitaControlesVisuais(Status: Boolean);
   public
@@ -49,6 +52,7 @@ type
     property NomeJanela: String read FNomeJanela write FNomeJanela;
     property Titulo: String read FTitulo write FTitulo;
     property CampoPesquisar: String read FCampoPesquisar write FCampoPesquisar;
+    property FiltroPesquisar: String read FFiltroPesquisar write FFiltroPesquisar;
   end;
 
 var
@@ -73,6 +77,7 @@ end;
 
 procedure TFrmModeloCadastro.BtnDeletarClick(Sender: TObject);
 begin
+  //Valida a persmissão do usuário para excluir
   if DM.QueryLogin.FieldByName(NomeTabela+'_E').AsString = '1' then
   begin
     if MessageDlg('Deseja Excluir o Registro', mtconfirmation, [mbYes, mbNo], 0) = mrYes then
@@ -87,6 +92,7 @@ end;
 
 procedure TFrmModeloCadastro.BtnEditarClick(Sender: TObject);
 begin
+  //Valida a persmissão do usuário para alterar
   if DM.QueryLogin.FieldByName(NomeTabela+'_A').AsString = '1' then
   begin
     DataSource.DataSet.Edit;
@@ -108,6 +114,7 @@ end;
 
 procedure TFrmModeloCadastro.BtnNovoClick(Sender: TObject);
 begin
+  //Valida a persmissão do usuário para inserir
   if DM.QueryLogin.FieldByName(NomeTabela+'_I').AsString = '1' then
   begin
     DataSource.DataSet.Insert;
@@ -116,6 +123,18 @@ begin
   end
   else
     ShowMessage('Você não possui permissão para realizar esta operação.');
+end;
+
+procedure TFrmModeloCadastro.BtnPesquisarClick(Sender: TObject);
+begin
+  if EdtPesquisa.Text = '' then
+    DataSource.DataSet.Filtered := False
+  else
+  begin
+    DataSource.DataSet.Filtered := False;
+    DataSource.DataSet.Filter := FiltroPesquisar;
+    DataSource.DataSet.Filtered := True
+  end;
 end;
 
 procedure TFrmModeloCadastro.BtnPosteriorClick(Sender: TObject);
@@ -135,26 +154,40 @@ end;
 
 procedure TFrmModeloCadastro.FormActivate(Sender: TObject);
 begin
+
+  //Parâmetros para personalização do formulário
   Self.Caption := NomeJanela;
   Self.PnlTitulo.Caption := Titulo;
   Self.EdtPesquisa.EditLabel.Caption := CampoPesquisar;
+
   HabilitaControles;
   HabilitaControlesVisuais(False);
+
+  //Configura o filtro do dataset
+  DataSource.DataSet.FilterOptions := [foCaseInsensitive];
 end;
 
 procedure TFrmModeloCadastro.HabilitaControles;
 begin
+  //Habilita os controles de acordo com o estado do dataset
   BtnNovo.Enabled := not(DataSource.DataSet.State in [dsInsert, dsEdit]);
   BtnGravar.Enabled := (DataSource.DataSet.State in [dsInsert, dsEdit]);
   BtnEditar.Enabled := (DataSource.DataSet.State in [dsBrowse]);
   BtnDeletar.Enabled := (DataSource.DataSet.State in [dsBrowse, dsEdit]);
   BtnCancelar.Enabled := (DataSource.DataSet.State in [dsInsert, dsEdit]);
+  BtnPrimeiro.Enabled := not(DataSource.DataSet.State in [dsInsert, dsEdit]);
+  BtnAnterior.Enabled := not(DataSource.DataSet.State in [dsInsert, dsEdit]);
+  BtnPosterior.Enabled := not(DataSource.DataSet.State in [dsInsert, dsEdit]);
+  BtnUltimo.Enabled := not(DataSource.DataSet.State in [dsInsert, dsEdit]);
+  BtnPesquisar.Enabled := not (DataSource.DataSet.State in [dsInsert, dsEdit]);
 end;
 
 procedure TFrmModeloCadastro.HabilitaControlesVisuais(Status: Boolean);
 var
   I: Integer;
 begin
+  //Varre os componentes visuais do formulário para habilitá-los
+  //ou desabilitá-los de acordo com o parâmetro Status
   for I := 0 to ComponentCount - 1 do
   begin
     if Components[I] is TDBEdit then

@@ -182,6 +182,15 @@ object FrmModeloCadastro: TFrmModeloCadastro
       EditLabel.Caption = 'Pesquisar por:'
       TabOrder = 0
     end
+    object BtnPesquisar: TBitBtn
+      Left = 295
+      Top = 22
+      Width = 75
+      Height = 25
+      Caption = 'Pesquisar'
+      TabOrder = 1
+      OnClick = BtnPesquisarClick
+    end
   end
   object DataSource: TDataSource
     Left = 864

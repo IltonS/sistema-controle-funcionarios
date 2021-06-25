@@ -51,6 +51,19 @@ inherited FrmUf: TFrmUf
     Top = 153
     Width = 756
     Height = 223
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'uf'
+        Title.Caption = 'UF'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'nome_estado'
+        Title.Caption = 'Nome do Estado'
+        Visible = True
+      end>
   end
   inherited PnlControles: TPanel
     Width = 756
