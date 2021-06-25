@@ -1,7 +1,7 @@
 inherited FrmFuncionarios: TFrmFuncionarios
   Caption = 'FrmFuncionarios'
   ClientHeight = 519
-  ExplicitTop = -41
+  ExplicitTop = 2
   ExplicitHeight = 548
   PixelsPerInch = 96
   TextHeight = 13
@@ -112,7 +112,7 @@ inherited FrmFuncionarios: TFrmFuncionarios
       DataSource = DataSource
       TabOrder = 2
     end
-    object DBRadioGroup1: TDBRadioGroup
+    object RgrSexo: TDBRadioGroup
       Left = 529
       Top = 10
       Width = 105
@@ -208,6 +208,79 @@ inherited FrmFuncionarios: TFrmFuncionarios
   inherited DBGrid: TDBGrid
     Top = 233
     Height = 229
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'nome_funcionario'
+        Title.Caption = 'Nome do Funcion'#225'rio'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'cpf'
+        Title.Caption = 'CPF'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'data_nascimento'
+        Title.Caption = 'Data de Nascimento'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'sexo'
+        Title.Caption = 'Sexo'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'logradouro'
+        Title.Caption = 'Logradouro'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'numero'
+        Title.Caption = 'N'#250'mero'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'complemento'
+        Title.Caption = 'Complemento'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'bairro'
+        Title.Caption = 'Bairro'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'cidade'
+        Title.Caption = 'Cidade'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'id_uf'
+        Title.Caption = 'UF'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'id_cargo'
+        Title.Caption = 'Cargo'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'salario'
+        Title.Caption = 'Sal'#225'rio'
+        Visible = True
+      end>
   end
   inherited PnlControles: TPanel
     Top = 462

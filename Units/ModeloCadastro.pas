@@ -126,6 +126,8 @@ begin
 end;
 
 procedure TFrmModeloCadastro.BtnNovoClick(Sender: TObject);
+var
+  I: Integer;
 begin
   //Valida a persmissão do usuário para inserir
   if DM.QueryLogin.FieldByName(NomeTabela+'_I').AsString = '1' then
@@ -133,6 +135,14 @@ begin
     DataSource.DataSet.Insert;
     HabilitaControles;
     HabilitaControlesVisuais(True);
+
+    //Se o formulário filho possuir um Radio Group, marca o primeiro item
+    for I := 0 to ComponentCount - 1 do
+    begin
+      if Components[I] is TDBRadioGroup then
+        TDBRadioGroup(Components[I]).ItemIndex := 0;
+    end;
+
   end
   else
     ShowMessage('Você não possui permissão para realizar esta operação.');
@@ -166,6 +176,8 @@ begin
 end;
 
 procedure TFrmModeloCadastro.FormActivate(Sender: TObject);
+var
+  I: Integer;
 begin
 
   //Parâmetros para personalização do formulário
@@ -178,6 +190,14 @@ begin
 
   //Configura o filtro do dataset
   DataSource.DataSet.FilterOptions := [foCaseInsensitive];
+
+  //Se o formulário filho possuir um Radio Group, marca o primeiro item
+  for I := 0 to ComponentCount - 1 do
+  begin
+    if Components[I] is TDBRadioGroup then
+      TDBRadioGroup(Components[I]).ItemIndex := 0;
+  end;
+
 end;
 
 procedure TFrmModeloCadastro.HabilitaControles;
@@ -212,7 +232,10 @@ begin
     else if Components[I] is TDBMemo then
       TDBMemo(Components[I]).Enabled := Status
     else if Components[I] is TDBCheckBox then
-      TDBCheckBox(Components[I]).Enabled := Status;
+      TDBCheckBox(Components[I]).Enabled := Status
+    else if Components[I] is TDBRadioGroup then
+      TDBRadioGroup(Components[I]).Enabled := Status;
+
   end;
 end;
 

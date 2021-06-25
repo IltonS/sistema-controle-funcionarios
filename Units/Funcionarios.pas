@@ -16,7 +16,7 @@ type
     DBEdit2: TDBEdit;
     Label3: TLabel;
     DBEdit3: TDBEdit;
-    DBRadioGroup1: TDBRadioGroup;
+    RgrSexo: TDBRadioGroup;
     Label4: TLabel;
     DBEdit4: TDBEdit;
     Label5: TLabel;
