@@ -32,12 +32,13 @@ inherited FrmUf: TFrmUf
       Top = 13
       Width = 121
       Height = 21
+      CharCase = ecUpperCase
       DataField = 'uf'
       DataSource = DataSource
       TabOrder = 0
     end
     object EdtNomeEstado: TDBEdit
-      Left = 294
+      Left = 280
       Top = 13
       Width = 227
       Height = 21

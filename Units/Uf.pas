@@ -32,7 +32,8 @@ procedure TFrmUf.FormActivate(Sender: TObject);
 begin
   NomeTabela := 'tb_uf';
   NomeJanela := 'Cadastro de UFs';
-  Titulo := 'UFs';
+  Titulo := '   UFs';
+  CampoPesquisar := 'Pesquisar por UF:';
   inherited;
 end;
 

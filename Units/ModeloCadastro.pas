@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ToolWin, Vcl.ExtCtrls,
-  Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, DataModule;
+  Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, DataModule, DBCtrls;
 
 type
   TFrmModeloCadastro = class(TForm)
@@ -40,12 +40,15 @@ type
     FNomeTabela: String;
     FNomeJanela: String;
     FTitulo: String;
+    FCampoPesquisar: String;
     procedure HabilitaControles;
+    procedure HabilitaControlesVisuais(Status: Boolean);
   public
     { Public declarations }
     property NomeTabela: String read FNomeTabela write FNomeTabela;
     property NomeJanela: String read FNomeJanela write FNomeJanela;
     property Titulo: String read FTitulo write FTitulo;
+    property CampoPesquisar: String read FCampoPesquisar write FCampoPesquisar;
   end;
 
 var
@@ -64,6 +67,8 @@ procedure TFrmModeloCadastro.BtnCancelarClick(Sender: TObject);
 begin
   DataSource.DataSet.Cancel;
   DataSource.DataSet.Filtered := False;
+  HabilitaControles;
+  HabilitaControlesVisuais(False);
 end;
 
 procedure TFrmModeloCadastro.BtnDeletarClick(Sender: TObject);
@@ -72,6 +77,8 @@ begin
   begin
     if MessageDlg('Deseja Excluir o Registro', mtconfirmation, [mbYes, mbNo], 0) = mrYes then
      DataSource.DataSet.Delete;
+     HabilitaControles;
+     HabilitaControlesVisuais(False);
   end
   else
     ShowMessage('Você não possui permissão para realizar esta operação.');
@@ -81,7 +88,11 @@ end;
 procedure TFrmModeloCadastro.BtnEditarClick(Sender: TObject);
 begin
   if DM.QueryLogin.FieldByName(NomeTabela+'_A').AsString = '1' then
-    DataSource.DataSet.Edit
+  begin
+    DataSource.DataSet.Edit;
+    HabilitaControles;
+    HabilitaControlesVisuais(True);
+  end
   else
     ShowMessage('Você não possui permissão para realizar esta operação.');
 
@@ -91,12 +102,18 @@ procedure TFrmModeloCadastro.BtnGravarClick(Sender: TObject);
 begin
   DataSource.DataSet.Post;
   DataSource.DataSet.Filtered := False;
+  HabilitaControles;
+  HabilitaControlesVisuais(False);
 end;
 
 procedure TFrmModeloCadastro.BtnNovoClick(Sender: TObject);
 begin
   if DM.QueryLogin.FieldByName(NomeTabela+'_I').AsString = '1' then
-    DataSource.DataSet.Insert
+  begin
+    DataSource.DataSet.Insert;
+    HabilitaControles;
+    HabilitaControlesVisuais(True);
+  end
   else
     ShowMessage('Você não possui permissão para realizar esta operação.');
 end;
@@ -120,6 +137,9 @@ procedure TFrmModeloCadastro.FormActivate(Sender: TObject);
 begin
   Self.Caption := NomeJanela;
   Self.PnlTitulo.Caption := Titulo;
+  Self.EdtPesquisa.EditLabel.Caption := CampoPesquisar;
+  HabilitaControles;
+  HabilitaControlesVisuais(False);
 end;
 
 procedure TFrmModeloCadastro.HabilitaControles;
@@ -129,6 +149,23 @@ begin
   BtnEditar.Enabled := (DataSource.DataSet.State in [dsBrowse]);
   BtnDeletar.Enabled := (DataSource.DataSet.State in [dsBrowse, dsEdit]);
   BtnCancelar.Enabled := (DataSource.DataSet.State in [dsInsert, dsEdit]);
+end;
+
+procedure TFrmModeloCadastro.HabilitaControlesVisuais(Status: Boolean);
+var
+  I: Integer;
+begin
+  for I := 0 to ComponentCount - 1 do
+  begin
+    if Components[I] is TDBEdit then
+      TDBEdit(Components[I]).Enabled := Status
+    else if Components[I] is TDBLookupComboBox then
+      TDBLookupComboBox(Components[I]).Enabled := Status
+    else if Components[I] is TDBComboBox then
+      TDBComboBox(Components[I]).Enabled := Status
+    else if Components[I] is TDBMemo then
+      TDBMemo(Components[I]).Enabled := Status;
+  end;
 end;
 
 end.

@@ -54,7 +54,9 @@ object FrmModeloCadastro: TFrmModeloCadastro
     Height = 117
     Align = alClient
     DataSource = DataSource
-    TabOrder = 2
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+    ReadOnly = True
+    TabOrder = 4
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
@@ -69,7 +71,7 @@ object FrmModeloCadastro: TFrmModeloCadastro
     Align = alBottom
     BevelEdges = []
     BevelOuter = bvNone
-    TabOrder = 3
+    TabOrder = 2
     object BtnNovo: TBitBtn
       Left = 16
       Top = 15
@@ -169,7 +171,7 @@ object FrmModeloCadastro: TFrmModeloCadastro
     Align = alTop
     BevelEdges = []
     BevelOuter = bvNone
-    TabOrder = 4
+    TabOrder = 3
     object EdtPesquisa: TLabeledEdit
       Left = 16
       Top = 25
