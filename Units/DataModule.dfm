@@ -38,4 +38,13 @@ object DM: TDM
     Left = 32
     Top = 144
   end
+  object TableCargos: TFDTable
+    Active = True
+    IndexFieldNames = 'id_cargo'
+    Connection = MySQLConnection
+    UpdateOptions.UpdateTableName = 'db_scf.tb_cargos'
+    TableName = 'db_scf.tb_cargos'
+    Left = 96
+    Top = 144
+  end
 end

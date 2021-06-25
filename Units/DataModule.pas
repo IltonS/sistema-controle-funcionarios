@@ -16,6 +16,7 @@ type
     MySQLConnection: TFDConnection;
     QueryLogin: TFDQuery;
     TableUF: TFDTable;
+    TableCargos: TFDTable;
   private
     { Private declarations }
   public

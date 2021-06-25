@@ -6,7 +6,8 @@ uses
   DataModule in 'Units\DataModule.pas' {DM: TDataModule},
   Login in 'Units\Login.pas' {FrmLogin},
   ModeloCadastro in 'Units\ModeloCadastro.pas' {FrmModeloCadastro},
-  Uf in 'Units\Uf.pas' {FrmUf};
+  Uf in 'Units\Uf.pas' {FrmUf},
+  Cargos in 'Units\Cargos.pas' {FrmCargos};
 
 {$R *.res}
 
@@ -19,5 +20,6 @@ begin
   Application.CreateForm(TFrmLogin, FrmLogin);
   Application.CreateForm(TFrmModeloCadastro, FrmModeloCadastro);
   Application.CreateForm(TFrmUf, FrmUf);
+  Application.CreateForm(TFrmCargos, FrmCargos);
   Application.Run;
 end.
