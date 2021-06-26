@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, System.Actions, Vcl.ActnList,
   Vcl.StdStyleActnCtrls, Vcl.ActnMan, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.AppEvnts, DataModule, Login,
-  Uf, Cargos, Perfis, Usuarios, Funcionarios;
+  Uf, Cargos, Perfis, Usuarios, Funcionarios, System.ImageList, Vcl.ImgList,
+  Vcl.ToolWin, Vcl.ActnCtrls;
 
 type
   TFrmMain = class(TForm)
@@ -33,6 +34,8 @@ type
     abelasAuxiliares1: TMenuItem;
     Cargos1: TMenuItem;
     UF1: TMenuItem;
+    ToolBarIcons24: TImageList;
+    ActionToolBar1: TActionToolBar;
     procedure Sair(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure TimerTimer(Sender: TObject);
