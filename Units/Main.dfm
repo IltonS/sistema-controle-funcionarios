@@ -105,6 +105,17 @@ object FrmMain: TFrmMain
           end
           item
             Caption = '-'
+          end
+          item
+            Action = CalculadoraCmd
+            Caption = 'C&alculadora'
+            ImageIndex = 0
+            ShowCaption = False
+          end
+          item
+            Action = NavegadorCmd
+            ImageIndex = 4
+            ShowCaption = False
           end>
         ActionBar = ActionToolBar1
       end>
@@ -170,6 +181,20 @@ object FrmMain: TFrmMain
       OnExecute = Perfis
       OnUpdate = PerfisCmdUpdate
     end
+    object CalculadoraCmd: TAction
+      Category = 'utilitarios'
+      Caption = '&Calculadora'
+      Hint = 'Calculadora|Abre a calculadora do Windows.'
+      ImageIndex = 0
+      OnExecute = Calculadora
+    end
+    object NavegadorCmd: TAction
+      Category = 'utilitarios'
+      Caption = '&Navegador'
+      Hint = 'Navegador|Abre o navegador padr'#227'o.'
+      ImageIndex = 4
+      OnExecute = Navegador
+    end
   end
   object MainMenu: TMainMenu
     Images = ToolBarIcons24
@@ -206,6 +231,15 @@ object FrmMain: TFrmMain
         object UF1: TMenuItem
           Action = UFCmd
         end
+      end
+    end
+    object Utilitrios1: TMenuItem
+      Caption = '&Utilit'#225'rios'
+      object Calculadora1: TMenuItem
+        Action = CalculadoraCmd
+      end
+      object Navegador1: TMenuItem
+        Action = NavegadorCmd
       end
     end
   end

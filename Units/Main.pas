@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, System.Actions, Vcl.ActnList,
   Vcl.StdStyleActnCtrls, Vcl.ActnMan, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.AppEvnts, DataModule, Login,
   Uf, Cargos, Perfis, Usuarios, Funcionarios, System.ImageList, Vcl.ImgList,
-  Vcl.ToolWin, Vcl.ActnCtrls;
+  Vcl.ToolWin, Vcl.ActnCtrls, ShellAPI;
 
 type
   TFrmMain = class(TForm)
@@ -36,6 +36,11 @@ type
     UF1: TMenuItem;
     ToolBarIcons24: TImageList;
     ActionToolBar1: TActionToolBar;
+    CalculadoraCmd: TAction;
+    NavegadorCmd: TAction;
+    Utilitrios1: TMenuItem;
+    Calculadora1: TMenuItem;
+    Navegador1: TMenuItem;
     procedure Sair(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure TimerTimer(Sender: TObject);
@@ -51,6 +56,8 @@ type
     procedure Perfis(Sender: TObject);
     procedure UsuariosCmdUpdate(Sender: TObject);
     procedure PerfisCmdUpdate(Sender: TObject);
+    procedure Calculadora(Sender: TObject);
+    procedure Navegador(Sender: TObject);
   private
     { Private declarations }
   public
@@ -68,6 +75,11 @@ procedure TFrmMain.ApplicationEventsHint(Sender: TObject);
 begin
   //Exibe a ajuda da ação
   StatusBar.Panels[3].Text := Application.Hint;
+end;
+
+procedure TFrmMain.Calculadora(Sender: TObject);
+begin
+  ShellExecute(0, nil,'calc', PChar(''), '', SW_NORMAL);
 end;
 
 procedure TFrmMain.Cargos(Sender: TObject);
@@ -115,6 +127,11 @@ begin
   FrmLogin.EdtLogin.Text := '';
   FrmLogin.EdtSenha.Text := '';
   FrmLogin.ShowModal;
+end;
+
+procedure TFrmMain.Navegador(Sender: TObject);
+begin
+  ShellExecute(Handle, 'Open', PChar('https://google.com'), '', '', SW_NORMAL);
 end;
 
 procedure TFrmMain.Perfis(Sender: TObject);
