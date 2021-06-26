@@ -2274,6 +2274,12 @@ object FrmMain: TFrmMain
       ImageIndex = 4
       OnExecute = Navegador
     end
+    object SobreCmd: TAction
+      Category = 'ajuda'
+      Caption = '&Sobre'
+      Hint = 'Sobre|Exibe informa'#231#245'es do sistema.'
+      OnExecute = Sobre
+    end
   end
   object MainMenu: TMainMenu
     Images = ToolBarIcons24
@@ -2319,6 +2325,12 @@ object FrmMain: TFrmMain
       end
       object Navegador1: TMenuItem
         Action = NavegadorCmd
+      end
+    end
+    object Ajuda1: TMenuItem
+      Caption = '&Ajuda'
+      object Sobre1: TMenuItem
+        Action = SobreCmd
       end
     end
   end

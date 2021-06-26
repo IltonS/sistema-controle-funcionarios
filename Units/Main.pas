@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, System.Actions, Vcl.ActnList,
   Vcl.StdStyleActnCtrls, Vcl.ActnMan, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.AppEvnts, DataModule, Login,
   Uf, Cargos, Perfis, Usuarios, Funcionarios, System.ImageList, Vcl.ImgList,
-  Vcl.ToolWin, Vcl.ActnCtrls, ShellAPI;
+  Vcl.ToolWin, Vcl.ActnCtrls, ShellAPI, Sobre;
 
 type
   TFrmMain = class(TForm)
@@ -41,6 +41,9 @@ type
     Utilitrios1: TMenuItem;
     Calculadora1: TMenuItem;
     Navegador1: TMenuItem;
+    SobreCmd: TAction;
+    Ajuda1: TMenuItem;
+    Sobre1: TMenuItem;
     procedure Sair(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure TimerTimer(Sender: TObject);
@@ -58,6 +61,7 @@ type
     procedure PerfisCmdUpdate(Sender: TObject);
     procedure Calculadora(Sender: TObject);
     procedure Navegador(Sender: TObject);
+    procedure Sobre(Sender: TObject);
   private
     { Private declarations }
   public
@@ -152,6 +156,11 @@ procedure TFrmMain.Sair(Sender: TObject);
 begin
   //Encerra a aplicação.
   Close;
+end;
+
+procedure TFrmMain.Sobre(Sender: TObject);
+begin
+  FrmSobre.ShowModal;
 end;
 
 procedure TFrmMain.TimerTimer(Sender: TObject);
